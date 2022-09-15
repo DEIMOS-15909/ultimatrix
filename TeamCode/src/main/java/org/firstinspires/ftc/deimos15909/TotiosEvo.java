@@ -37,6 +37,8 @@ public class TotiosEvo extends OpMode {
         Carpus = hardwareMap.servo.get("Carpus");
         DeChill = hardwareMap.servo.get ("DeChill");
         DeChill2 = hardwareMap.servo.get("DeChill2");
+        Garrita = hardwareMap.servo.get("Garrita");
+
 
     }
 
@@ -45,9 +47,34 @@ public class TotiosEvo extends OpMode {
         Elev.setPower(gamepad2.left_stick_y);
         Elev2.setPower(gamepad2.left_stick_y);
         Brazito.setPower(gamepad2.right_stick_y);
+        Elev3.setPower(gamepad2.right_trigger);
+        Elev3.setPower(-gamepad2.left_trigger);
+
+        if(gamepad2.a){
+            Carpus.setPosition(1);
+        }
+
+        else{
+            Carpus.setPosition(0);
+        }
 
 
+        if(gamepad2.x){
+            DeChill2.setPosition(1);
+            DeChill.setPosition(1);
+        }
+        else{
+            DeChill.setPosition(0);
+            DeChill2.setPosition(0);
+        }
 
+        if(!gamepad2.b){
+            Garrita.setPosition(0);
+        }
+
+        else{
+            Garrita.setPosition(1);
+        }
 
         double drive  = -gamepad1.left_stick_y;
         double strafe = gamepad1.left_stick_x;
