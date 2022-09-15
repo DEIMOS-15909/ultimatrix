@@ -68,7 +68,7 @@ public class TotiosEvo extends OpMode {
             DeChill2.setPosition(0);
         }
 
-        if(!gamepad2.b){
+        if(gamepad2.b){
             Garrita.setPosition(0);
         }
 
