@@ -46,7 +46,7 @@ public class TotiosEvo extends OpMode {
         Elev2.setPower(gamepad2.left_stick_y);
         Brazito.setPower(gamepad2.right_stick_y);
 
-
+        if
 
 
 
