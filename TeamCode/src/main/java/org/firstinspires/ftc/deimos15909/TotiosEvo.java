@@ -31,6 +31,7 @@ public class TotiosEvo extends OpMode {
         Dere = hardwareMap.dcMotor.get("Dere");
         Dera = hardwareMap.dcMotor.get("Dera");
         Brazito = hardwareMap.dcMotor.get("Brazito");
+        Garrita =hardwareMap.servo.get("Garrita");
         Elev =  hardwareMap.dcMotor.get("Elev");
         Elev2 = hardwareMap.dcMotor.get("Elev2");
         Elev3 = hardwareMap.dcMotor.get("Elev3");
@@ -45,10 +46,14 @@ public class TotiosEvo extends OpMode {
         Elev.setPower(gamepad2.left_stick_y);
         Elev2.setPower(gamepad2.left_stick_y);
         Brazito.setPower(gamepad2.right_stick_y);
-
-
-
-
+        Elev3.setPower(gamepad2.right_trigger);
+        Elev3.setPower(-gamepad2.left_trigger);
+        if (gamepad2.a) {
+            Carpus.setPosition(1);
+        }
+        if (!gamepad2.a) {
+            Carpus.setPosition(0);
+        }
         double drive  = -gamepad1.left_stick_y;
         double strafe = gamepad1.left_stick_x;
         double twist  = gamepad1.right_stick_x;
