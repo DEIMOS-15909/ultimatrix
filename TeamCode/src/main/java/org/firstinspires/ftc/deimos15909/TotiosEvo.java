@@ -26,10 +26,10 @@ public class TotiosEvo extends OpMode {
 
     @Override
     public void init() {
-        Izqe = hardwareMap.dcMotor.get("Izqe"); //Izquierda Enfrente
-        Izqa = hardwareMap.dcMotor.get("Izqa"); //Izquierda Atras
-        Dere = hardwareMap.dcMotor.get("Dere"); //Enfrente Derecha
-        Dera = hardwareMap.dcMotor.get("Dera"); //Derecha Atras
+        Izqe = hardwareMap.dcMotor.get("Izqe");
+        Izqa = hardwareMap.dcMotor.get("Izqa");
+        Dere = hardwareMap.dcMotor.get("Dere");
+        Dera = hardwareMap.dcMotor.get("Dera");
         //MOTORES CONTROLHUB
 
         Brazito = hardwareMap.dcMotor.get("Brazito");
@@ -48,11 +48,11 @@ public class TotiosEvo extends OpMode {
 
     @Override
     public void loop() {
-
+        Elev.setPower(gamepad2.left_stick_y);
         Elev2.setPower(gamepad2.left_stick_y);
         Brazito.setPower(gamepad2.right_stick_y);
-        Elev3.setPower(gamepad2.left_stick_y);
-        //Elev3.setPower(-gamepad2.left_trigger);
+        Elev3.setPower(gamepad2.right_trigger);
+        Elev3.setPower(-gamepad2.left_trigger);
 
         if (gamepad2.a) {
             Carpus.setPosition(1);
@@ -63,9 +63,9 @@ public class TotiosEvo extends OpMode {
 
 
         if (gamepad2.x) {
-            Burgir.setPosition(1);
+            Burgir.setPosition(0.51);
         } else {
-            Burgir.setPosition(0.50);
+            Burgir.setPosition(1);
 
             if (gamepad2.b) {
                 Garrita.setPosition(0);
