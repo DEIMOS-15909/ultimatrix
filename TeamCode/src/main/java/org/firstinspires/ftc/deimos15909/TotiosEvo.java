@@ -19,9 +19,9 @@ public class TotiosEvo extends OpMode {
     DcMotor Elev3;
     Servo Garrita;
     Servo Carpus;
-    Servo DeChill;
+    Servo Burgir;
     Servo DeChill2;
-
+    Servo DeChill;
 
 
     @Override
@@ -30,15 +30,19 @@ public class TotiosEvo extends OpMode {
         Izqa = hardwareMap.dcMotor.get("Izqa");
         Dere = hardwareMap.dcMotor.get("Dere");
         Dera = hardwareMap.dcMotor.get("Dera");
+        //MOTORES CONTROLHUB
+
         Brazito = hardwareMap.dcMotor.get("Brazito");
         Elev =  hardwareMap.dcMotor.get("Elev");
         Elev2 = hardwareMap.dcMotor.get("Elev2");
         Elev3 = hardwareMap.dcMotor.get("Elev3");
+        //MOTORES EXPANSION
+
         Carpus = hardwareMap.servo.get("Carpus");
         DeChill = hardwareMap.servo.get ("DeChill");
         DeChill2 = hardwareMap.servo.get("DeChill2");
         Garrita = hardwareMap.servo.get("Garrita");
-
+        Burgir  = hardwareMap.servo.get("burigir");
 
     }
 
@@ -54,27 +58,34 @@ public class TotiosEvo extends OpMode {
             Carpus.setPosition(1);
         }
 
-        else{
+        if(gamepad2.b)
             Carpus.setPosition(0);
-        }
+
 
 
         if(gamepad2.x){
-            DeChill2.setPosition(1);
-            DeChill.setPosition(1);
+            Burgir.setPosition(0.51);
         }
         else{
-            DeChill.setPosition(0);
-            DeChill2.setPosition(0);
-        }
+            Burgir.setPosition(1);
 
+<<<<<<< Updated upstream
         if(gamepad2.b){
             Garrita.setPosition(0);
+=======
+>>>>>>> Stashed changes
         }
 
-        else{
-            Garrita.setPosition(1);
+<<<<<<< HEAD
+        if(gamepad2.right_bumper){
+=======
+        if(gamepad2.b){
+>>>>>>> 17ecf58a4b932074e804139256d23d7f28ce0435
+            Garrita.setPosition(0);
         }
+         if(gamepad2.left_bumper){
+             Garrita.setPosition(1);
+         }
 
         double drive  = -gamepad1.left_stick_y;
         double strafe = gamepad1.left_stick_x;
@@ -83,6 +94,7 @@ public class TotiosEvo extends OpMode {
 
         double[] speeds = {
                 (drive + strafe + twist),
+
                 (drive - strafe - twist),
                 (drive - strafe + twist),
                 (drive + strafe - twist)
