@@ -69,18 +69,20 @@ public class TotiosEvo extends OpMode {
         else{
             Burgir.setPosition(1);
 
-<<<<<<< Updated upstream
         if(gamepad2.b){
             Garrita.setPosition(0);
-=======
->>>>>>> Stashed changes
+        }
+        else {
+            Garrita.setPosition(.5);
+        }
         }
 
-<<<<<<< HEAD
         if(gamepad2.right_bumper){
-=======
+
+
+        }
         if(gamepad2.b){
->>>>>>> 17ecf58a4b932074e804139256d23d7f28ce0435
+
             Garrita.setPosition(0);
         }
          if(gamepad2.left_bumper){

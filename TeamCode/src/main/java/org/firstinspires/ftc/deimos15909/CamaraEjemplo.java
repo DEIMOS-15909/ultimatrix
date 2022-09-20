@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.deimos15909.pipeline.AprilTagDetectionPipeline;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -109,14 +110,16 @@ public class CamaraEjemplo extends LinearOpMode {
         while(opModeIsActive()) {
             ArrayList<AprilTagDetection> detections = pipeline.getLatestDetections();
 
-            int position = 1;
 
-            if (detections.size() >= 1) {
-                position = detections.get(0).id;
+            int position = 1; {
+                if (detections.size() >= 1) {
+                    position = detections.get(0).id;
+                }
+
+                telemetry.addData("id detectada", position);
+                telemetry.update();
+
             }
-
-            telemetry.addData("id detectada", position);
-            telemetry.update();
         }
     }
 

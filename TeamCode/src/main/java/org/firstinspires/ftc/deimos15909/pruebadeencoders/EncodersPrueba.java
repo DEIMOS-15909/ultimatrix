@@ -2,13 +2,15 @@ package org.firstinspires.ftc.deimos15909.pruebadeencoders;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Autonomous (name = "Autoencoders1")
-public class Autoencoders1 extends LinearOpMode {
-
+@Disabled
+public class EncodersPrueba extends LinearOpMode {
+/*
     private DcMotor left;
     private DcMotor right;
 
@@ -50,5 +52,9 @@ public class Autoencoders1 extends LinearOpMode {
         while(opModeIsActive() && left.isBusy() && right.isBusy())
             idle();
     }
+*/
+    @Override
+    public void runOpMode() throws InterruptedException {
 
+    }
 }
