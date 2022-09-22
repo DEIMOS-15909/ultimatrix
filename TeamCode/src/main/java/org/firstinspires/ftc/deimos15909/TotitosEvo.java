@@ -54,13 +54,15 @@ public class TotitosEvo extends OpMode {
         if (gamepad2.b) {
             garra.setPosition(1);
         }
-        if (gamepad2.x) {
+        if (gamepad2.right_bumper) {
             rotador.setPosition(0);
         }
-        if (gamepad2.y) {
+        if (gamepad2.left_bumper) {
             rotador.setPosition(1);
         }
-
+        if(gamepad2.y){
+            rotador.setPosition(0.5);
+        }
         double drive  = -gamepad1.left_stick_y;
         double strafe = gamepad1.left_stick_x;
         double twist  = gamepad1.right_stick_x;
