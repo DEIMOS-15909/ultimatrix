@@ -1,1 +1,1 @@
-Before issuing a pull request, please see the contributing page.
+Ponle aqui en que trabajaste paro.

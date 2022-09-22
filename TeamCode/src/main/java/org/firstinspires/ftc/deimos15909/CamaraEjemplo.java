@@ -19,7 +19,6 @@ public class CamaraEjemplo extends LinearOpMode {
 
     OpenCvWebcam camera;
 
-
     static final double FEET_PER_METER = 3.28084;
 
     // Lens intrinsics
@@ -93,7 +92,7 @@ public class CamaraEjemplo extends LinearOpMode {
                  * For a rear facing camera or a webcam, rotation is defined assuming the camera is facing
                  * away from the user.
                  */
-                 camera.startStreaming(640, 360, OpenCvCameraRotation.UPRIGHT);
+                 camera.startStreaming(640, 480, OpenCvCameraRotation.UPRIGHT);
             }
 
             @Override
