@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name = "Puto quien no gane", group = "controles")
+@TeleOp(name = "TeleOpFinal", group = "controles")
 public class
 
 controles extends OpMode {
