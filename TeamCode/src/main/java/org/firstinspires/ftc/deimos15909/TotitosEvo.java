@@ -43,7 +43,7 @@ public class TotitosEvo extends OpMode {
 
     @Override
     public void loop() {
-        elev.setPower(gamepad2.left_stick_y);
+            elev.setPower(gamepad2.left_stick_y);
         elev2.setPower(gamepad2.left_stick_y);
         brazo.setPower(gamepad2.right_stick_y);
 
