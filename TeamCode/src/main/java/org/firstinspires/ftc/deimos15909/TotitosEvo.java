@@ -18,7 +18,7 @@ public class TotitosEvo extends OpMode {
     DcMotor elev2;
     Servo garra;
     Servo rotador;
-
+    boolean slowmode = false;
 
 
     @Override
@@ -43,7 +43,7 @@ public class TotitosEvo extends OpMode {
 
     @Override
     public void loop() {
-            elev.setPower(gamepad2.left_stick_y);
+        elev.setPower(gamepad2.left_stick_y);
         elev2.setPower(gamepad2.left_stick_y);
         brazo.setPower(gamepad2.right_stick_y);
 
@@ -83,13 +83,23 @@ public class TotitosEvo extends OpMode {
         if (max > 1) {
             for (int i = 0; i < speeds.length; i++) speeds[i] /= max;
         }
+        if (gamepad1.right_bumper) {
+            slowmode = !slowmode;
+        }
+        if(slowmode == false) {
+            izqE.setPower(speeds[0]);
+            derE.setPower(speeds[1]);
+            izqA.setPower(-speeds[2]);
+            derA.setPower(speeds[3]);
+        }
 
 
-        izqE.setPower(speeds[0]);
-        derE.setPower(speeds[1]);
-        izqA.setPower(-speeds[2]);
-        derA.setPower(speeds[3]);
-
+    if (slowmode == true){
+        izqE.setPower(speeds[0]*0.5);
+        derE.setPower(speeds[1]*0.5);
+        izqA.setPower(-speeds[2]*0.5);
+        derA.setPower(speeds[3]*0.5);
+      }
     }
 }
 //
