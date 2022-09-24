@@ -9,74 +9,89 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp(name = "Ultimatrix", group = "Control")
 public class TotiosEvo extends OpMode {
 
-    DcMotor Izqe;
-    DcMotor Dere;
-    DcMotor Izqa;
-    DcMotor Dera;
-    DcMotor Brazito;
-    DcMotor Elev;
-    DcMotor Elev2;
-    DcMotor Elev3;
-    Servo Garrita;
-    Servo Carpus;
-    Servo DeChill;
-    Servo DeChill2;
-
+    DcMotor izqE;
+    DcMotor derE;
+    DcMotor izqA;
+    DcMotor derA;
+    DcMotor brazo;
+    DcMotor elev;
+    DcMotor elev2;
+    Servo garra;
+    Servo rotador;
 
 
     @Override
     public void init() {
-        Izqe = hardwareMap.dcMotor.get("Izqe");
-        Izqa = hardwareMap.dcMotor.get("Izqa");
-        Dere = hardwareMap.dcMotor.get("Dere");
-        Dera = hardwareMap.dcMotor.get("Dera");
-        Brazito = hardwareMap.dcMotor.get("Brazito");
-        Elev =  hardwareMap.dcMotor.get("Elev");
-        Elev2 = hardwareMap.dcMotor.get("Elev2");
-        Elev3 = hardwareMap.dcMotor.get("Elev3");
-        Carpus = hardwareMap.servo.get("Carpus");
-        DeChill = hardwareMap.servo.get ("DeChill");
-        DeChill2 = hardwareMap.servo.get("DeChill2");
+        izqE = hardwareMap.dcMotor.get("izqE");
+        izqA = hardwareMap.dcMotor.get("izqA");
+        derE = hardwareMap.dcMotor.get("derE");
+        derA = hardwareMap.dcMotor.get("derA");
+        //MOTORES CONTROLHUB
+
+        brazo = hardwareMap.dcMotor.get("brazo");
+        elev =  hardwareMap.dcMotor.get("elev");//
+        elev2 = hardwareMap.dcMotor.get("elev2");//expansion 1
+        //MOTORES EXPANSION
+
+        garra = hardwareMap.servo.get("garra");//control 0
+        rotador = hardwareMap.servo.get("rotador");// expansion 0
 
     }
 
     @Override
     public void loop() {
-        Elev.setPower(gamepad2.left_stick_y);
-        Elev2.setPower(gamepad2.left_stick_y);
-        Brazito.setPower(gamepad2.right_stick_y);
+
+        elev2.setPower(gamepad2.left_stick_y);
+        brazo.setPower(gamepad2.right_stick_y);
+        
 
 
+        if (gamepad2.x) {
+            garra.setPosition(1);
+        } else {
+            garra.setPosition(0.50);
+
+            if (gamepad2.b) {
+                garra.setPosition(0);
+            }
+
+            if (gamepad2.b) {
+                garra.setPosition(0);
+            }
+            if (gamepad2.left_bumper) {
+                garra.setPosition(1);
+            }
+
+            double drive = -gamepad1.left_stick_y;
+            double strafe = gamepad1.left_stick_x;
+            double twist = gamepad1.right_stick_x;
 
 
-        double drive  = -gamepad1.left_stick_y;
-        double strafe = gamepad1.left_stick_x;
-        double twist  = gamepad1.right_stick_x;
+            double[] speeds = {
+                    (drive + strafe + twist),
+
+                    (drive - strafe - twist),
+                    (drive - strafe + twist),
+                    (drive + strafe - twist)
+            };
 
 
-        double[] speeds = {
-                (drive + strafe + twist),
-                (drive - strafe - twist),
-                (drive - strafe + twist),
-                (drive + strafe - twist)
-        };
+            double max = Math.abs(speeds[0]);
+            for (int i = 0; i < speeds.length; i++) {
+                if (max < Math.abs(speeds[i])) max = Math.abs(speeds[i]);
+            }
 
 
-        double max = Math.abs(speeds[0]);
-        for(int i = 0; i < speeds.length; i++) {
-            if ( max < Math.abs(speeds[i]) ) max = Math.abs(speeds[i]);
+            if (max > 1) {
+                for (int i = 0; i < speeds.length; i++) speeds[i] /= max;
+            }
+
+
+            izqE.setPower(speeds[0]);
+            derE.setPower(speeds[1]);
+            izqA.setPower(-speeds[2]);
+            derA.setPower(speeds[3]);
+
         }
-
-
-        if (max > 1) {
-            for (int i = 0; i < speeds.length; i++) speeds[i] /= max;
-        }
-
-
-        Izqe.setPower(speeds[0]);
-        Dere.setPower(speeds[1]);
-        Izqa.setPower(-speeds[2]);
-        Dera.setPower(speeds[3]);
-
     }
 }
